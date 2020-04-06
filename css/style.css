@@ -1,5 +1,10 @@
-.top-calendar,
-.main-calendar {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.top-calendar {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,11 +25,53 @@
      cursor: not-allowed;
 }
 
+.main-calendar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.calendar-container,
+.days-container {
+    width: 700px;
+}
+
 #calendar li,
+#days li,
 #nome-mese {
     text-transform: capitalize;
 }
 
 .festivo {
     color: red;
+}
+
+#days {
+    display: flex;
+    list-style: none;
+    margin-top: 100px;
+}
+
+#days li {
+    width: 100px;
+    border: 1px solid black;
+}
+
+#calendar {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+#calendar li,
+.empty-day {
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    border: 1px solid black;
+}
+
+.empty-day {
+    border: none !important;
 }

@@ -19,14 +19,20 @@
                 </div>
             </div>
             <div class="main-calendar">
-                <ul id="calendar">
+                <div class="days-container">
+                    <ul id="days">
+                    </ul>
+                </div>
+                <div class="calendar-container">
+                    <ul id="calendar">
 
-                </ul>
+                    </ul>
+                </div>
             </div>
         </div>
 
         <script id="calendar-template" type="text/x-handlebars-template">
-            <li data-day="{{dataDay}}"> {{day}} </li>
+            <li data-day="{{dataDay}}" day-name="{{dayOfWeek}}"> {{day}} </li>
         </script>
 
 

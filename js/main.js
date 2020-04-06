@@ -11,6 +11,7 @@ $(document).ready(function () {
     var limiteIniziale = moment('2018-01-01');
     var limiteFinale = moment('2018-12-31');
 
+    creaIndiceGiorni(dataIniziale);
     stampaGiorniMese(dataIniziale); // Inizializzazione Calendario
     stampaFestivi(dataIniziale);
 
@@ -73,16 +74,38 @@ $(document).ready(function () {
         var giorniMese = meseDaStampare.daysInMonth(); // Quanti giorni ci sono nel mese corrente.
         var nomeMese = meseDaStampare.format('MMMM'); // Prendiamo il nome del mese
         $('#nome-mese').text(nomeMese); // Aggiorniamo il nome del mese in top calendar
+        for (var i = 1; i < meseDaStampare.isoWeekday(); i++) {
+            $('#calendar').append('<li class="empty-day"></li>');
+        }
         for (var i = 1; i <= giorniMese; i++) {
             // $('#calendar').append('<li>' + i + ' ' + nomeMese + '</li>');
             var giornoDaInserire = {
                 day: i + ' ' + nomeMese,
-                dataDay: standardDay.format('YYYY-MM-DD')
+                dataDay: standardDay.format('YYYY-MM-DD'),
+                dayOfWeek: standardDay.isoWeekday()
             }
             var templateFinale = templateGiorno(giornoDaInserire); // Stiamo popolando il template con i dati dell'oggetto
             $('#calendar').append(templateFinale);
             standardDay.add(1, 'day'); // Incrementiamo il valore all'attributo data-day
         }
+        // for (var i = $("#calendar:last-child").attr('day-name'); i <= 7; i++) {
+        //         $('#calendar').append('<li></li>');
+        // } //tentativo di aggiungere quadrati alla fine del mese
     }
 
+
+    function creaIndiceGiorni(data) {
+        var defaultData = data.clone();
+        for (var i = 1; i <= 7; i++) {
+            $('#days').append('<li>' + defaultData.format('dddd') + '</li>');
+            defaultData.add(1, 'days');
+        }
+    }
+
+    // function creaCaselleFinali() {
+    //     for (var i = $("#calendar:last-child").attr("day-name"); i <= 7; i++) {
+    //         console.log(i);
+    //             $('#calendar').append('<li></li>');
+    //     }
+    // }
 });
