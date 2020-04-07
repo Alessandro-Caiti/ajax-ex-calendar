@@ -95,7 +95,7 @@ $(document).ready(function () {
 
 
     function creaIndiceGiorni(data) {
-        var defaultData = data.clone();
+        var defaultData = data.clone().weekday(0);
         for (var i = 1; i <= 7; i++) {
             $('#days').append('<li>' + defaultData.format('dddd') + '</li>');
             defaultData.add(1, 'days');
