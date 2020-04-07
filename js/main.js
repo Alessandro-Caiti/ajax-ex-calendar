@@ -88,9 +88,10 @@ $(document).ready(function () {
             $('#calendar').append(templateFinale);
             standardDay.add(1, 'day'); // Incrementiamo il valore all'attributo data-day
         }
-        // for (var i = $("#calendar:last-child").attr('day-name'); i <= 7; i++) {
-        //         $('#calendar').append('<li></li>');
-        // } //tentativo di aggiungere quadrati alla fine del mese
+        for (var i = standardDay.endOf("month").isoWeekday(); i <= 7; i++) {
+            console.log(i);
+                $('#calendar').append('<li></li>');
+        } //tentativo di aggiungere quadrati alla fine del mese
     }
 
 
